@@ -47,19 +47,36 @@ test_for_paper_cifar10/
 │   ├── cifar-10-batches-py/        # auto-downloaded
 │   ├── cifar-100-python/           # auto-downloaded
 │   ├── svhn/                       # auto-downloaded
-│   ├── tiny-imagenet-200/val/      # manual download
-│   └── human detection dataset/    # manual download
+│   ├── tiny-imagenet-200/
+│   │   └── val/                    # reorganized: one subfolder per class
+│   │       ├── n01443537/
+│   │       ├── n02085620/
+│   │       └── ...
+│   └── human detection dataset/
+│       ├── 0/                      # class 0 images
+│       └── 1/                      # class 1 images
 └── src/
 
 test_for_paper_human/
 ├── data/
-│   ├── human detection dataset/    # manual download
+│   ├── human detection dataset/
+│   │   ├── 0/
+│   │   └── 1/
 │   ├── cifar-10-batches-py/        # auto-downloaded
 │   ├── cifar-100-python/           # auto-downloaded
 │   ├── svhn/                       # auto-downloaded
-│   └── tiny-imagenet-200/val/      # manual download
+│   └── tiny-imagenet-200/
+│       └── val/                    # reorganized: one subfolder per class
+│           ├── n01443537/
+│           └── ...
 └── src/
 ```
+
+**Notes on the datasets:**
+
+- **Tiny-ImageNet:** place the **reorganized** version of the dataset, where the `val/` folder contains one subfolder per class (e.g. `val/n01443537/`, `val/n02085620/`, ...). The original Stanford release — where all validation images are inside a single `val/images/` folder with a `val_annotations.txt` file — will **not** work with the code, because it uses `torchvision.datasets.ImageFolder`, which expects one subfolder per class.
+
+- **Human Detection:** the folder must contain exactly two subfolders, `0/` and `1/`, each holding the images of the corresponding class. `torchvision.datasets.ImageFolder` will infer the class labels from these folder names.
 
 ---
 
@@ -134,6 +151,10 @@ This paper has received partial funding from the Hellenic Foundation for Researc
 
 <p align="center">
   <img src="assets/eu-flag.png" alt="Funded by the European Union" width="180">
+</p>
+
+<p align="center">
+  <b>Funded by<br>the European Union</b>
 </p>
 
 <p align="center">
