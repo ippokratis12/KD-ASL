@@ -137,10 +137,6 @@ This paper has received partial funding from the Hellenic Foundation for Researc
 </p>
 
 <p align="center">
-  <b>Funded by<br>the European Union</b>
-</p>
-
-<p align="center">
   Learn more about <a href="https://robosapiens.eu/">RoboSAPIENS</a>.
 </p>
 
